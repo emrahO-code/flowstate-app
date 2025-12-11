@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flowstate Tracker</title>
+    </head>
+<body class="bg-gray-900 text-white p-8">
+    <h1 class="text-3xl font-bold mb-4">Active App:</h1>
+    <p id="app-display" class="text-xl text-indigo-400">Waiting for data...</p>
+
+    <script>
+        // This JS function will be called directly by the Rust backend via IPC
+        function updateActiveApp(appName) {
+            document.getElementById('app-display').textContent = appName;
+            console.log("Updated app to:", appName);
+            // TODO: Add logic here to log the data to a database
+        }
+    </script>
+    </body>
+</html>

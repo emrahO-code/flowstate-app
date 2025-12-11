@@ -1,0 +1,25 @@
+[package]
+name = "flowstate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# CORE: Low-level access to macOS Objective-C APIs
+# Crucial for reading the active application name.
+objc = "0.2.7" 
+
+# CORE: Windowing library (used to manage the desktop window)
+winit = "0.28" 
+
+# CORE: Native webview binding (to render your HTML/JS/Tailwind UI)
+wry = "0.33"
+
+# Utility: Used for safely running the tracking loop asynchronously
+tokio = { version = "1", features = ["full"] }
+
+# --- macOS Specific Linking ---
+# This block tells the Rust compiler (via the linker) to include the
+# essential macOS frameworks (AppKit, Foundation, etc.) needed 
+# to run a GUI app and call system APIs.
+[target.'cfg(target_os = "macos")'.link]
+framework = ["AppKit", "Foundation", "CoreGraphics"]
